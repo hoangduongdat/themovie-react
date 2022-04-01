@@ -1,0 +1,17 @@
+@use '../../scss/' as *;
+
+.movie-gird{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+    gap: 30px 10px;
+
+    @include tablet{
+        grid-template-columns: repeat(auto-fill, minmax(150px,1fr));
+        gap: 20px 5px;
+    }
+
+    &__loadmore {
+        @include flex(center,center)
+    }
+
+}
