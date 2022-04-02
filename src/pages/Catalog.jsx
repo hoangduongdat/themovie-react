@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -8,12 +8,12 @@ import MovieGird from '../components/movie-gird/MovieGird';
 
 
 const Catalog = () => {
-    const [items,setItems] =useState()
-
+    
     const { category } = useParams()
-
-    console.log(category)
-
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    },[category])
+    
     return (
         <>
             <PageHeader>{category === cate.movie ? 'Movies' : 'Tv Series'}</PageHeader>

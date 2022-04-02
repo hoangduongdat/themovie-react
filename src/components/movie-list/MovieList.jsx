@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 import './movie-list.scss';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import{ Link } from 'react-router-dom';
 
-import Button from '../button/Button'
 import MovieCard from '../movie-card/MovieCard'
 
 import tmdbApi, {category} from '../../api/tmdbApi'
-import apiConfig from '../../api/apiConfig'
+
 
 MovieList.propTypes = {
     category: PropTypes.string.isRequired,
@@ -27,6 +25,7 @@ function MovieList(props) {
             const params ={}
 
             if(props.type !== 'similar') {
+                console.log(props.type)
                 switch(props.category) {
                     case category.movie: 
                         response = await tmdbApi.getMoviesList(props.type,{ params }) 
@@ -35,12 +34,13 @@ function MovieList(props) {
                         response = await tmdbApi.getTvList(props.type,{ params }) 
                 }
             } else {
+            
                 response = await tmdbApi.similar(props.category, props.id) 
             } 
             setItems(response.results)
         }
         getList()
-    },[])
+    },[props.category,props.id,props.type])
     return (
         <div className="movie-list" >
             <Swiper

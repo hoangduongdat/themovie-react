@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import HeroSlide from '../components/hero-slide/HeroSlide'
 import { Link } from 'react-router-dom';
@@ -7,6 +7,9 @@ import MovieList from '../components/movie-list/MovieList';
 import { category, movieType, tvType } from '../api/tmdbApi'
 
 const Home = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    },[])
     return (
         <>
             <HeroSlide/>
